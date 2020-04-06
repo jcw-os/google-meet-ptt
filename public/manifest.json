@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "Google Meet Push to Talk",
+  "description": "Enable push to talk functionality in Google Meet",
+  "version": "1.0.1",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png",
+    "256": "icons/icon-256.png",
+    "512": "icons/icon-512.png",
+    "1024": "icons/icon-1024.png"
+  },
+  "content_scripts": [
+      {
+          "matches": ["https://meet.google.com/*"],
+          "js": ["js/content_script.js"]
+      }
+  ]
+}

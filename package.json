@@ -1,0 +1,33 @@
+{
+  "name": "google-meet-ptt",
+  "version": "1.0.1",
+  "description": "Chrome extension to enable a push to talk functionality in google meet",
+  "main": "index.js",
+  "scripts": {
+    "watch": "webpack --config webpack/webpack.dev.js --watch",
+    "build": "webpack --config webpack/webpack.prod.js",
+    "prepare-for-deploy": "rm dist.zip && zip -r dist.zip dist",
+    "clean": "rimraf dist",
+    "test": "npx jest"
+  },
+  "author": "JCW Services",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jcw-os/google-meet-ptt.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chrome": "0.0.100",
+    "@types/jest": "^25.1.4",
+    "copy-webpack-plugin": "^5.1.1",
+    "jest": "^25.1.0",
+    "ts-jest": "^25.2.1 ",
+    "rimraf": "^3.0.2 ",
+    "ts-loader": "^6.2.1",
+    "typescript": "~3.8.3 ",
+    "webpack": "~4.42.0",
+    "webpack-cli": "~3.3.11",
+    "webpack-merge": "~4.2.2"
+  }
+}
