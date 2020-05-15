@@ -1,6 +1,6 @@
 {
   "name": "google-meet-ptt",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Chrome extension to enable a push to talk functionality in google meet",
   "main": "index.js",
   "scripts": {
