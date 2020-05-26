@@ -14,7 +14,7 @@ setInterval(() => findMicButton(), 250);
 
 function findMicButton() {
     document.querySelectorAll('[data-tooltip]').forEach((element: HTMLElement) => {
-        if (element.dataset.tooltip && (element.dataset.tooltip.includes('⌘ + D') || element.dataset.tooltip.includes('CTRL + D'))) {
+        if (element.dataset.tooltip && (element.dataset.tooltip.toLowerCase().includes('⌘ + d') || element.dataset.tooltip.toLowerCase().includes('ctrl + d'))) {
             if (micButton !== element) {
                 micButton = element;
                 listenForMicButtonClick();
