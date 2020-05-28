@@ -65,17 +65,26 @@ setInterval(() => {
             // Add Divider line
             buttons.prepend(buttons.children[1].cloneNode());
 
-            const toggleButton: any = document.createElement('div');
-            toggleButton.classList = buttons.children[1].classList;
-            toggleButton.id = '__ptt-button';
-            toggleButton.onclick = togglePTTApp;
-            buttons.prepend(toggleButton);
+            const pttButtonContainer: any = document.createElement('div');
+            pttButtonContainer.classList = buttons.children[1].classList;
+            pttButtonContainer.id = '__ptt-button-container';
+            buttons.prepend(pttButtonContainer);
 
-            const toggleButtonSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-            toggleButtonSVG.style.width = '24px'
-            toggleButtonSVG.style.height = '24px'
-            toggleButtonSVG.setAttribute('viewBox', '0 0 24 24')
-            document.querySelector('#__ptt-button').appendChild(toggleButtonSVG)
+            const pttButtonToggleButton: any = document.createElement('span');
+            pttButtonToggleButton.id = '__ptt-button';
+            pttButtonToggleButton.onclick = togglePTTApp;
+            pttButtonContainer.prepend(pttButtonToggleButton)
+
+            const pttButtonToggleButtonSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+            pttButtonToggleButtonSVG.style.width = '24px'
+            pttButtonToggleButtonSVG.style.height = '24px'
+            pttButtonToggleButtonSVG.setAttribute('viewBox', '0 0 24 24')
+            document.querySelector('#__ptt-button').appendChild(pttButtonToggleButtonSVG)
+
+            const pttButtonBackground = document.createElement('div');
+            pttButtonBackground.id = '__ptt-button-background';
+            pttButtonContainer.appendChild(pttButtonBackground)
+
             setToggleIcon(pttAppOn)
         }
     }

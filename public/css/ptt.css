@@ -1,6 +1,28 @@
-#__ptt-button {
-  display: flex;
+#__ptt-button-container:hover {
+  background: transparent;
 }
-#__ptt-button:hover {
-  background-color: rgba(128, 134, 139, 0.122);
+
+#__ptt-button {
+  -webkit-box-align: center;
+  box-align: center;
+  align-items: center;
+  display: flex;
+  position: relative;
+  padding: 0 8px;
+  height: 100%;
+  justify-content: center;
+}
+
+#__ptt-button-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #00796b;
+  opacity: 0;
+}
+
+#__ptt-button-background:hover {
+  opacity: 0.04;
 }
