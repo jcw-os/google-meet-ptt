@@ -1,0 +1,6 @@
+#__ptt-button {
+  display: flex;
+}
+#__ptt-button:hover {
+  background-color: rgba(128, 134, 139, 0.122);
+}

@@ -14,7 +14,8 @@
   "content_scripts": [
     {
       "matches": ["https://meet.google.com/*"],
-      "js": ["js/content_script.js"]
+      "js": ["js/content_script.js"],
+      "css": ["css/ptt.css"]
     }
   ]
 }

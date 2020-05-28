@@ -68,7 +68,6 @@ setInterval(() => {
             const toggleButton: any = document.createElement('div');
             toggleButton.classList = buttons.children[1].classList;
             toggleButton.id = '__ptt-button';
-            toggleButton.style.display = 'flex';
             toggleButton.onclick = togglePTTApp;
             buttons.prepend(toggleButton);
 
