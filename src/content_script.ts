@@ -2,6 +2,7 @@ let micButton: HTMLElement = null
 let initialised = false;
 let spaceDown = false;
 let pttAppOn = true;
+let chatOpen = false;
 
 function listenForMicButtonClick() {
     // Unfocus on the mic mute button
@@ -30,7 +31,7 @@ function findMicButton() {
 
 // Listen for space key down and when pressed unmute the mic
 document.onkeydown = function (e) {
-    if (pttAppOn && micButton && e.key === ' ' && spaceDown === false) {
+    if (!chatOpen && pttAppOn && micButton && e.key === ' ' && spaceDown === false) {
         spaceDown = true;
         if (micButton.dataset.isMuted === 'true') {
             toggleMicButton();
@@ -40,7 +41,7 @@ document.onkeydown = function (e) {
 
 // Listen for space key up and when released mute the mic
 document.onkeyup = function (e) {
-    if (pttAppOn && micButton && e.key === ' ' && spaceDown) {
+    if (!chatOpen && pttAppOn && micButton && e.key === ' ' && spaceDown) {
         spaceDown = false;
         if (micButton.dataset.isMuted === 'false') {
             toggleMicButton();
@@ -59,7 +60,17 @@ setInterval(() => {
     const videoCanvas = document.querySelector('[data-fps-request-screencast-cap]');
     if (videoCanvas) {
         const buttons = videoCanvas.parentElement.parentElement.parentElement;
-        if (!buttons.classList.contains('ptt_initialised')) {
+
+        // Check if the chat window is open
+        if (buttons.children[1] === undefined) {
+            if (document.getElementsByName("chatTextInput")) {
+                chatOpen = true;
+            }
+        } else {
+            chatOpen = false;
+        }
+
+        if (!buttons.classList.contains('ptt_initialised') && !chatOpen) {
             buttons.classList.add('ptt_initialised');
 
             // Add Divider line
