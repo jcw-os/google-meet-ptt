@@ -58,46 +58,41 @@ function toggleMicButton() {
 
 setInterval(() => {
     const videoCanvas = document.querySelector('[data-fps-request-screencast-cap]');
-    if (videoCanvas) {
-        const buttons = videoCanvas.parentElement.parentElement.parentElement;
+    if (!videoCanvas) {
+        return;
+    }
+    const buttons = videoCanvas.parentElement.parentElement.parentElement;
 
-        // Check if the chat window is open
-        if (buttons.children[1] === undefined) {
-            if (document.getElementsByName("chatTextInput")) {
-                chatOpen = true;
-            }
-        } else {
-            chatOpen = false;
-        }
+    // Check if the chat window is open
+    chatOpen = !!document.querySelector("[name=chatTextInput]");
 
-        if (!buttons.classList.contains('ptt_initialised') && !chatOpen) {
-            buttons.classList.add('ptt_initialised');
+    if (!buttons.classList.contains('ptt_initialised') && !chatOpen) {
+        buttons.classList.add('ptt_initialised');
 
-            // Add Divider line
-            buttons.prepend(buttons.children[1].cloneNode());
+        // Add Divider line
+        buttons.prepend(buttons.children[1].cloneNode());
 
-            const pttButtonContainer: any = document.createElement('div');
-            pttButtonContainer.classList = buttons.children[1].classList;
-            pttButtonContainer.id = '__ptt-button-container';
-            buttons.prepend(pttButtonContainer);
+        const pttButtonContainer: any = document.createElement('div');
+        pttButtonContainer.classList = buttons.children[1].classList;
+        pttButtonContainer.id = '__ptt-button-container';
+        buttons.prepend(pttButtonContainer);
 
-            const pttButtonToggleButton: any = document.createElement('span');
-            pttButtonToggleButton.id = '__ptt-button';
-            pttButtonToggleButton.onclick = togglePTTApp;
-            pttButtonContainer.prepend(pttButtonToggleButton)
+        const pttButtonToggleButton: any = document.createElement('span');
+        pttButtonToggleButton.id = '__ptt-button';
+        pttButtonToggleButton.onclick = togglePTTApp;
+        pttButtonContainer.prepend(pttButtonToggleButton)
 
-            const pttButtonToggleButtonSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-            pttButtonToggleButtonSVG.style.width = '24px'
-            pttButtonToggleButtonSVG.style.height = '24px'
-            pttButtonToggleButtonSVG.setAttribute('viewBox', '0 0 24 24')
-            document.querySelector('#__ptt-button').appendChild(pttButtonToggleButtonSVG)
+        const pttButtonToggleButtonSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+        pttButtonToggleButtonSVG.style.width = '24px'
+        pttButtonToggleButtonSVG.style.height = '24px'
+        pttButtonToggleButtonSVG.setAttribute('viewBox', '0 0 24 24')
+        document.querySelector('#__ptt-button').appendChild(pttButtonToggleButtonSVG)
 
-            const pttButtonBackground = document.createElement('div');
-            pttButtonBackground.id = '__ptt-button-background';
-            pttButtonContainer.appendChild(pttButtonBackground)
+        const pttButtonBackground = document.createElement('div');
+        pttButtonBackground.id = '__ptt-button-background';
+        pttButtonContainer.appendChild(pttButtonBackground)
 
-            setToggleIcon(pttAppOn)
-        }
+        setToggleIcon(pttAppOn)
     }
 }, 250);
 
