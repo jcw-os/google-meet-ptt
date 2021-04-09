@@ -14,8 +14,12 @@ function listenForMicButtonClick() {
 setInterval(() => findMicButton(), 250);
 
 function findMicButton() {
+    // German has a different name for the ctrl key
+    // French has no spaces around the plus
+    // Japanese uses fullwidth parentheses and has additional text
+    const muteButtonTooltip = /\((?:ctrl|strg) ?\+ ?d\)|\uFF08ctrl\+d.*\uFF09/i
     document.querySelectorAll('[data-tooltip]').forEach((element: HTMLElement) => {
-        if (element.dataset.tooltip && (element.dataset.tooltip.toLowerCase().includes('⌘ + d') || element.dataset.tooltip.toLowerCase().includes('ctrl + d'))) {
+        if (element.dataset.tooltip && muteButtonTooltip.test(element.dataset.tooltip)) {
             if (micButton !== element) {
                 micButton = element;
                 listenForMicButtonClick();
