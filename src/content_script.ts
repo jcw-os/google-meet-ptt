@@ -22,7 +22,7 @@ function findMicButton() {
     const muteButtonTooltip = /\((?:ctrl|strg) ?\+ ?d\)|\uFF08ctrl\+d.*\uFF09/i
     document.querySelectorAll('button').forEach((element: HTMLElement) => {
         const aria_label = element.getAttribute('aria-label')
-        if (aria_label && aria_label.toLowerCase().includes('⌘ + d')) {
+        if (aria_label && (aria_label.toLowerCase().includes('⌘ + d') || muteButtonTooltip.test(aria_label))) {
             _mic_button_element = element;
             meetUI = 'new';
         }
